@@ -103,6 +103,19 @@ import "@fontsource/open-sans";
   h3 {
     margin-top: 15px;
   }
+  @media (max-width: 800px) {
+    .dialog {
+      height: 100%;
+      border-radius: 0;
+      padding-top: 50px;
+    }
+    .methods {
+      flex-direction: column;
+    }
+    .methods div {
+      margin: 10px 0;
+    }
+  }
 </style>
 
 <div id="remind-dialog" class="container">
@@ -129,11 +142,17 @@ import "@fontsource/open-sans";
 </div>
 
 <script>
+  const dialog = document.getElementById("remind-dialog");
+  const close = () => document.body.classList.remove("show-remind");
+
   for (let el of document.querySelectorAll(".close, #remind-dialog button")) {
-    el.addEventListener("click", () => {
-      document.body.classList.remove("show-remind");
-    });
+    el.addEventListener("click", close);
   }
+  dialog.addEventListener("click", (event) => {
+    if (event.target !== dialog) return;
+    close();
+  });
+
   document.querySelector(".goto-cal").addEventListener("click", () => {
     window.open("https://calendar.google.com/calendar/u/1?cid=Y184YzFmMmRhNGI2ZWQ2YTYxMzljMTliY2ViMzQ3MjRlY2M2MGQyZjQwNTAxMTQwMzlhNTA0YWEyMDRiZDQwMTMwQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20", "_blank");
   });

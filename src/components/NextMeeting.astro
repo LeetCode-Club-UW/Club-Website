@@ -1,6 +1,5 @@
 ---
 import "@fontsource/open-sans";
-import "../util/getReminder";
 import getEvents from "../util/getEvents";
 const events = await getEvents();
 const nextEvent = events[0] || { summary: "No meetings scheduled" };

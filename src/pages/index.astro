@@ -78,6 +78,15 @@ import ContentSection from '../components/ContentSection.astro';
 	.contact-list a {
 		color: var(--red);
 	}
+	@media (max-width: 800px) {
+		.contact-list {
+			flex-direction: column;
+		}
+		.contact-list > div {
+			margin-right: 0;
+			margin-bottom: 20px;
+		}
+	}
 </style>
 
 <Layout 
