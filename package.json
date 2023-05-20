@@ -1,0 +1,18 @@
+{
+  "name": "",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/vercel": "^3.4.0",
+    "@fontsource/open-sans": "^4.5.14",
+    "@fontsource/roboto-mono": "^4.5.10",
+    "astro": "^2.5.1"
+  }
+}

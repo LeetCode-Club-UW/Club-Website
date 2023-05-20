@@ -1,0 +1,60 @@
+---
+import "@fontsource/open-sans";
+---
+
+<style>
+  #header-container {
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    padding: 10px 30px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    font-family: "Open Sans", sans-serif;
+  }
+  #logo {
+    height: 100%;
+  }
+  #menu-items {
+    display: flex;
+    align-items: center;
+  }
+  #menu-items li {
+    font-weight: bold;
+    font-size: 20px;
+    display: inline-block;
+    margin-left: 20px;
+  }
+  #menu-items li.action {
+    padding: 8px 15px;
+    color: white;
+    background-color: var(--red);
+    border-radius: 5px;
+  }
+  #menu-items a {
+    color: unset;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  #menu-items a:hover {
+    opacity: .5;
+  }
+  @media (max-width: 800px) {
+    #header-container {
+      justify-content: center;
+    }
+    #menu-items {
+      display: none;
+    }
+  }
+</style>
+
+<div id="header-container">
+  <img id="logo" src="/logo.svg">
+  <div id="menu-items">
+    <ul>
+      <li><a href="#">Schedule</a></li>
+      <li><a href="#">About</a></li>
+      <li class="action"><a href="#">Get Involved</a></li>
+    </ul>
+  </div>
+</div>
