@@ -1,0 +1,140 @@
+---
+import "@fontsource/roboto-mono";
+import "@fontsource/open-sans";
+---
+
+<style>
+  * {
+    font-family: "Open Sans", sans-serif;
+    margin: 0;
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2;
+  }
+  :global(.show-remind) .container {
+    opacity: 1;
+    pointer-events: unset;
+  }
+  .dialog {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+    padding: 20px 30px;
+    border-radius: 10px;
+    background-color: white;
+  }
+  .close {
+    position: absolute;
+    border: none;
+    background: none;
+    padding: 0;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+  }
+  .close img {
+    height: 30px;
+  }
+  .methods {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  .methods div {
+    flex: 1 1 0px;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    border-radius: 5px;
+    border: 2px solid var(--gray);
+    padding: 20px;
+    padding-bottom: 55px;
+    margin: 0 10px;
+  }
+  .methods img {
+    height: 30px;
+    margin-bottom: 5px;
+    opacity: .6;
+  }
+  .methods h4 {
+    font-family: "Roboto Mono", monospace;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .methods button {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    color: white;
+    background-color: var(--red);
+    border: none;
+    border-radius: 2px;
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+  .methods input {
+    width: 100%;
+    padding: 5px 10px;
+    border: 1px solid var(--gray);
+    border-radius: 2px;
+  }
+  .methods button:hover {
+    color: rgba(255, 255, 255, .5);
+  }
+  h2 {
+    font-family: "Roboto Mono", monospace;
+  }
+  h3 {
+    margin-top: 15px;
+  }
+</style>
+
+<div id="remind-dialog" class="container">
+  <div class="dialog">
+    <button class="close"><img src="/close.svg" alt="Close dialog" /></button>
+    <h2>Get reminders about meetings</h2>
+    <h3><i>Choose an option</i></h3>
+    <div class="methods">
+      <div>
+        <img src="/mail.svg" alt="Mail icon" />
+        <h4>Get an email</h4>
+        <form action="https://leetcodeclub.us21.list-manage.com/subscribe/post?u=53d0a5023cce7f310e6bfa082&amp;id=095bca25cb&amp;f_id=007654e1f0" method="post" target="_blank">
+          <input type="email" name="EMAIL" placeholder="Your email..." />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+      <div>
+        <img src="/calendar.svg" alt="Calendar icon" />
+        <h4>Add to your calendar</h4>
+        <button class="goto-cal">Go to Cal</button>
+      </div>
+    </div>
+  </div>  
+</div>
+
+<script>
+  for (let el of document.querySelectorAll(".close, #remind-dialog button")) {
+    el.addEventListener("click", () => {
+      document.body.classList.remove("show-remind");
+    });
+  }
+  document.querySelector(".goto-cal").addEventListener("click", () => {
+    window.open("https://calendar.google.com/calendar/u/1?cid=Y184YzFmMmRhNGI2ZWQ2YTYxMzljMTliY2ViMzQ3MjRlY2M2MGQyZjQwNTAxMTQwMzlhNTA0YWEyMDRiZDQwMTMwQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20", "_blank");
+  });
+</script>

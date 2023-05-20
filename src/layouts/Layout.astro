@@ -1,4 +1,5 @@
 ---
+import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 const { title, description } = Astro.props;
 ---
@@ -15,7 +16,10 @@ const { title, description } = Astro.props;
 	</head>
 	<body>
 		<Header />
-		<slot />
+		<div id="page-container">
+			<slot />
+		</div>
+		<Footer />
 	</body>
 </html>
 
@@ -28,7 +32,21 @@ const { title, description } = Astro.props;
 		margin: 0;
 		height: 100%;
 	}
+	body.show-remind {
+		overflow: hidden;
+	}
+	#page-container {
+		padding-top: 50px;
+	}
 	* {
 		box-sizing: border-box;
 	}
 </style>
+
+<script>
+	for (let el of document.querySelectorAll(".remind-open")) {
+		el.addEventListener("click", () => {
+			document.body.classList.add("show-remind");
+		});
+	}
+</script>

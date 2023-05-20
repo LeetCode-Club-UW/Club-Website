@@ -1,5 +1,6 @@
 ---
 import "@fontsource/open-sans";
+import "../util/getReminder";
 import getEvents from "../util/getEvents";
 const events = await getEvents();
 const nextEvent = events[0] || { summary: "No meetings scheduled" };
@@ -16,23 +17,28 @@ if (nextEvent) {
   * {
     font-family: "Open Sans", sans-serif;
   }
-  #container {
+  .container {
     display: flex;
+    /*align-items: center;*/
     border-radius: 5px;
     padding: 20px;
     background-color: white;
   }
-  #event-info p {
+  .event-info p {
     margin: 0;
   }
-  #event-info .title {
+  .event-info .title {
     font-weight: bold;
     font-size: 20px;
   }
-  #event-info .date {
+  .event-info .date {
     margin-top: 5px;
   }
-  #remind {
+  .remind {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin-left: 40px;
     padding: 8px 15px;
     color: white;
@@ -42,16 +48,24 @@ if (nextEvent) {
     font-weight: bold;
     font-size: 20px;
     transition: color 0.2s;
+    cursor: pointer;
   }
-  #remind:hover {
+  .remind img {
+    height: 20px;
+    transition: opacity 0.2s;
+  }
+  .remind:hover img {
+    opacity: 0.5;
+  }
+  .remind:hover {
     color: rgba(255, 255, 255, .5);
   }
 </style>
 
-<div id="container">
-  <div id="event-info">
+<div class="container">
+  <div class="event-info">
     <p class="title">{nextEvent.summary}</p>
-    {dateStr && (<p class="date"><i>{dateStr}</i></p>)}
+    {dateStr && (<p class="date"><i>{dateStr}<br>{nextEvent.location}</i></p>)}
   </div>
-  <button id="remind">Remind Me</button>
+  <button class="remind remind-open"><img src="/clock.svg" alt="Clock icon" />Remind Me</button>
 </div>

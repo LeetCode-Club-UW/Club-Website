@@ -4,6 +4,11 @@ import "@fontsource/open-sans";
 
 <style>
   #header-container {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background-color: white;
     display: flex;
     justify-content: space-between;
     height: 50px;
@@ -53,9 +58,9 @@ import "@fontsource/open-sans";
   <img id="logo" src="/logo.svg">
   <div id="menu-items">
     <ul>
-      <li><a href="#">Schedule</a></li>
-      <li><a href="#">About</a></li>
-      <li class="action"><a href="#">Get Involved</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#about">About</a></li>
+      <li class="action remind-open"><a href="#">Get Involved</a></li>
     </ul>
   </div>
 </div>

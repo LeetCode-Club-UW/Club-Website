@@ -3,10 +3,10 @@ import Layout from '../layouts/Layout.astro';
 
 import "@fontsource/roboto-mono";
 import "@fontsource/open-sans";
-import getEvents from '../util/getEvents';
 import NextMeeting from '../components/NextMeeting.astro';
-
-const calData = await getEvents();
+import RemindDialog from '../components/RemindDialog.astro';
+import MemberResources from '../components/MemberResources.astro';
+import ContentSection from '../components/ContentSection.astro';
 ---
 
 <style>
@@ -42,7 +42,41 @@ const calData = await getEvents();
 		margin-bottom: 0;
 	}
 	h2 {
-		margin-top: 2px;
+		margin-top: 20px;
+		margin-bottom: 10px;
+	}
+
+	.calendar-iframe {
+		border-width:0;
+		height: 400px;
+		width: 100%;
+	}
+
+	.contact-list {
+		display: flex;
+	}
+	.contact-list > div {
+		margin-right: 20px;
+		max-width: 300px;
+		flex: 1 1 0px;
+		display: flex;
+	}
+	.contact-list > div > div {
+		padding-top: 10px;
+	}
+	.contact-list img {
+		height: 100px;
+		margin-right: 20px;
+	}
+	.contact-list p {
+		margin: 0;
+	}
+	.contact-list .name {
+		font-family: "Roboto Mono", monospace;
+		font-size: 20px;
+	}
+	.contact-list a {
+		color: var(--red);
 	}
 </style>
 
@@ -50,11 +84,58 @@ const calData = await getEvents();
 	title="Welcome to Astro." 
 	description="Your journey to an SWE Internship starts here."
 	>
+
 	<div class="hero">
 		<h1>Your journey to an <b>SWE Internship</b> starts here.</h1>
 		<h2><i>Next Meeting:</i></h2>
 		<NextMeeting />
 	</div>
-	<p>{JSON.stringify(calData)}</p>
-	<p>test!</p>
+
+	<MemberResources />
+
+	<ContentSection id="schedule" heading="Meeting Schedule">
+		<iframe 
+		class="calendar-iframe" src="https://calendar.google.com/calendar/embed?height=400&wkst=1&bgcolor=%23E67C73&ctz=America%2FChicago&showPrint=0&showNav=0&showTitle=0&showDate=0&showTabs=0&showCalendars=0&showTz=0&src=Y184YzFmMmRhNGI2ZWQ2YTYxMzljMTliY2ViMzQ3MjRlY2M2MGQyZjQwNTAxMTQwMzlhNTA0YWEyMDRiZDQwMTMwQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23D50000"></iframe>
+
+		<h3>Bi-Weekly LeetCode Sessions</h3>
+		Go over a sample problem, note different approaches (the initial way, the smart way)
+		40 mins of sample programming (teams? individual?)
+		Explaining solution, giving lesser programs
+		<h3>Occasional Other Meetings</h3>
+	</ContentSection>
+
+	<ContentSection id="about" heading="About">
+		LCUW is dedicated to providing its members with a comprehensive range of resources, workshops, and 
+		learning opportunities to enhance their problem-solving abilities, algorithmic thinking, and coding proficiency. 
+		Through collaborative study groups, coding challenges, and mock interview sessions, LCUW endeavors to create a 
+		conducive atmosphere for continuous improvement and growth.<br><br>
+		Additionally, LCUW seeks to bridge the gap between academic knowledge and industry expectations by organizing 
+		guest lectures, panel discussions, and networking events with professionals from the software engineering field. 
+		By facilitating meaningful connections between students and industry experts, LCUW aims to provide invaluable 
+		insights into real-world software development practices and the technical interview process.
+	</ContentSection>
+
+	<ContentSection id="contact" heading="Contact">
+		Feel free to reach out! (something about recruiting guest speakers)
+		<div class="contact-list">
+			<div>
+				<img src="/max.jpeg" alt="Max headshot">
+				<div>
+					<p class="name">Max Maeder</p>
+					<p>Co-founder</p>
+					<p class="email"><a href="mailto:max@leetcodeclub.org" target="_blank">max@leetcodeclub.org</a></p>
+				</div>
+			</div>
+			<div>
+				<img src="/jeremy.jpeg" alt="Jeremy headshot">
+				<div>
+					<p class="name">Jeremy Kintana</p>
+					<p>Co-founder</p>
+					<p class="email"><a href="mailto:jeremy@leetcodeclub.org" target="_blank">jeremy@leetcodeclub.org</a></p>
+				</div>
+			</div>
+		</div>
+	</ContentSection>
+
+	<RemindDialog />
 </Layout>

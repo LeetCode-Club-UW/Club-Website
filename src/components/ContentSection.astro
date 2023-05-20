@@ -1,0 +1,24 @@
+---
+import "@fontsource/roboto-mono";
+import "@fontsource/open-sans";
+const { id, heading } = Astro.props;
+---
+
+<style>
+  div {
+    padding: 0 20%;
+  }
+  h2 {
+    font-family: "Roboto Mono", monospace;
+    margin-bottom: 0;
+    color: var(--gray);
+  }
+  * {
+    font-family: "Open Sans", sans-serif;
+  }
+</style>
+
+<div id={id}>
+  <h2>{heading}</h2>
+  <p><slot /></p>
+</div>

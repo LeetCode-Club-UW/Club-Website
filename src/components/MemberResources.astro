@@ -1,0 +1,45 @@
+
+---
+import "@fontsource/open-sans";
+---
+
+<style>
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20;
+    background-color: var(--gray);
+    height: 80px;
+    font-family: "Open Sans", sans-serif;
+  }
+  .container span {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+  }
+  .container img {
+    margin-left: 5px;
+    height: 25px;
+    transform: translateY(2px);
+  }
+  .container a {
+    margin: 0 10px;
+    padding: 8px 15px;
+    color: white;
+    background-color: var(--red);
+    border-radius: 5px;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .container a:hover {
+    color: rgba(255, 255, 255, 0.5);
+  }
+</style>
+
+<div class="container">
+  <span>Member resources<img src="/right-arrow.svg" alt="Arrow" /></span>
+  <a href="#" target="_blank">Register on WIN</a>
+  <a href="https://forms.gle/XGu5ikFZKBnbiExh6" target="_blank">Attendance form</a>
+</div>
