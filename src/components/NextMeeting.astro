@@ -1,0 +1,57 @@
+---
+import "@fontsource/open-sans";
+import getEvents from "../util/getEvents";
+const events = await getEvents();
+const nextEvent = events[0] || { summary: "No meetings scheduled" };
+
+let dateStr = "";
+if (nextEvent) {
+  dateStr += new Date(nextEvent.start).toLocaleString('en-US', { weekday: "short" }) + " ";
+  dateStr += new Date(nextEvent.start).toLocaleString('en-US', { dateStyle:"medium", timeStyle: "short" }) + " to ";
+  dateStr += new Date(nextEvent.end).toLocaleString('en-US', { timeStyle: "short" });
+}
+---
+
+<style>
+  * {
+    font-family: "Open Sans", sans-serif;
+  }
+  #container {
+    display: flex;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: white;
+  }
+  #event-info p {
+    margin: 0;
+  }
+  #event-info .title {
+    font-weight: bold;
+    font-size: 20px;
+  }
+  #event-info .date {
+    margin-top: 5px;
+  }
+  #remind {
+    margin-left: 40px;
+    padding: 8px 15px;
+    color: white;
+    background-color: var(--red);
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 20px;
+    transition: color 0.2s;
+  }
+  #remind:hover {
+    color: rgba(255, 255, 255, .5);
+  }
+</style>
+
+<div id="container">
+  <div id="event-info">
+    <p class="title">{nextEvent.summary}</p>
+    {dateStr && (<p class="date"><i>{dateStr}</i></p>)}
+  </div>
+  <button id="remind">Remind Me</button>
+</div>
