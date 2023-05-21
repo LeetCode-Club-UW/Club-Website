@@ -58,7 +58,7 @@ const nextEvent = events[0] || { summary: "No meetings scheduled" };
 <div class="container">
   <div class="event-info">
     <p class="title">{nextEvent.summary}</p>
-    {nextEvent && (<p class="date"><i><EventDate event={nextEvent} /><br>{nextEvent.location}</i></p>)}
+    {nextEvent.start && (<p class="date"><i><EventDate event={nextEvent} /><br>{nextEvent.location}</i></p>)}
   </div>
   <button class="remind remind-open"><img src="/clock.svg" alt="Clock icon" />Remind Me</button>
 </div>
