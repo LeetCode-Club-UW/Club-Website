@@ -7,6 +7,9 @@ import NextMeeting from '../components/NextMeeting.astro';
 import RemindDialog from '../components/RemindDialog.astro';
 import MemberResources from '../components/MemberResources.astro';
 import ContentSection from '../components/ContentSection.astro';
+import getEvents from '../util/getEvents';
+import Event from '../components/Event.astro';
+const events = await getEvents();
 ---
 
 <style>
@@ -61,6 +64,31 @@ import ContentSection from '../components/ContentSection.astro';
 		width: 100%;
 	}
 
+	.event-key {
+		display: flex;
+	}
+	.key-item {
+		display: flex;
+		margin-right: 20px;
+	}
+	.key-item p {
+		margin: 0;
+	}
+	.key-color {
+		height: 15px;
+		width: 15px;
+		margin-right: 10px;
+		border: none;
+		border-radius: 3px;
+		transform: translateY(4px);
+	}
+	.key-color.green {
+		background-color: var(--green);
+	}
+	.key-color.purple {
+		background-color: var(--purple);
+	}
+
 	.contact-list {
 		display: flex;
 	}
@@ -99,7 +127,7 @@ import ContentSection from '../components/ContentSection.astro';
 </style>
 
 <Layout 
-	title="Welcome to Astro." 
+	title="LeetCode Club UW | Home" 
 	description="Your journey to an SWE Internship starts here."
 	>
 
@@ -112,14 +140,20 @@ import ContentSection from '../components/ContentSection.astro';
 	<MemberResources />
 
 	<ContentSection id="schedule" heading="Meeting Schedule">
-		<iframe 
-		class="calendar-iframe" src="https://calendar.google.com/calendar/embed?height=400&wkst=1&bgcolor=%23E67C73&ctz=America%2FChicago&showPrint=0&showNav=0&showTitle=0&showDate=0&showTabs=0&showCalendars=0&showTz=0&src=Y184YzFmMmRhNGI2ZWQ2YTYxMzljMTliY2ViMzQ3MjRlY2M2MGQyZjQwNTAxMTQwMzlhNTA0YWEyMDRiZDQwMTMwQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23D50000"></iframe>
+		<!-- <iframe 
+		class="calendar-iframe" src="https://calendar.google.com/calendar/embed?height=400&wkst=1&bgcolor=%23E67C73&ctz=America%2FChicago&showPrint=0&showNav=0&showTitle=0&showDate=0&showTabs=0&showCalendars=0&showTz=0&src=Y184YzFmMmRhNGI2ZWQ2YTYxMzljMTliY2ViMzQ3MjRlY2M2MGQyZjQwNTAxMTQwMzlhNTA0YWEyMDRiZDQwMTMwQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23D50000"></iframe> -->
 
-		<h3>Bi-Weekly LeetCode Sessions</h3>
-		Go over a sample problem, note different approaches (the initial way, the smart way)
-		40 mins of sample programming (teams? individual?)
-		Explaining solution, giving lesser programs
-		<h3>Occasional Other Meetings</h3>
+		{events.map((event) => (<Event event={event} />))}
+		<div class="event-key">
+			<div class="key-item">
+				<div class="key-color green"></div>
+				<p>Bi-Weekly LeetCode Sessions</p>
+			</div>
+			<div class="key-item">
+				<div class="key-color purple"></div>
+				<p>Special Meetings/Events</p>
+			</div>
+		</div>
 	</ContentSection>
 
 	<ContentSection id="about" heading="About">
