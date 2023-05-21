@@ -23,6 +23,9 @@ const { title, description } = Astro.props;
 
 			gtag('config', 'G-ND7Q8N6QYJ');
 		</script>
+		<script is:inline type="module">
+			window.onhashchange = window.onload = () => window.scrollBy({ top: -100 })
+		</script>
 	</head>
 	<body>
 		<Header />

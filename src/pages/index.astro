@@ -66,15 +66,18 @@ const events = await getEvents();
 
 	.event-key {
 		display: flex;
+		flex-wrap: wrap;
 	}
 	.key-item {
 		display: flex;
+		flex-shrink: 0;
 		margin-right: 20px;
 	}
 	.key-item p {
 		margin: 0;
 	}
 	.key-color {
+		flex-shrink: 0;
 		height: 15px;
 		width: 15px;
 		margin-right: 10px;
