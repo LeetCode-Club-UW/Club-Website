@@ -1,0 +1,43 @@
+---
+import "@fontsource/roboto-mono";
+import "@fontsource/open-sans";
+
+const { name, role, email, photo } = Astro.props;
+---
+
+<style>
+  .member {
+		margin-right: 20px;
+    margin-bottom: 20px;
+		max-width: 300px;
+		flex: 1 1 0px;
+		display: flex;
+	}
+	.member > div {
+		padding-top: 10px;
+	}
+	.member img {
+		height: 100px;
+		margin-right: 20px;
+    border-radius: 5px;
+	}
+	.member p {
+		margin: 0;
+	}
+	.member .name {
+		font-family: "Roboto Mono", monospace;
+		font-size: 20px;
+	}
+	.member a {
+		color: var(--red);
+	}
+</style>
+
+<div class="member">
+  <img src={photo} alt=`${name}'s headshot`>
+  <div>
+    <p class="name">{name}</p>
+    <p>{role}</p>
+    <p class="email"><a href=`mailto:${email}` target="_blank">{email}</a></p>
+  </div>
+</div>

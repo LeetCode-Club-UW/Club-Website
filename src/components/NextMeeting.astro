@@ -12,7 +12,7 @@ const nextEvent = events[0] || { summary: "No meetings scheduled" };
   }
   .container {
     display: flex;
-    /*align-items: center;*/
+    align-items: center;
     border-radius: 5px;
     padding: 20px;
     background-color: white;
@@ -53,12 +53,24 @@ const nextEvent = events[0] || { summary: "No meetings scheduled" };
   .remind:hover {
     color: rgba(255, 255, 255, .5);
   }
+  @media (max-width: 800px) {
+    .container {
+      margin-left: -20px;
+      margin-right: -20px;
+    }
+    .remind {
+      margin-left: 20px;
+    }
+  }
 </style>
 
 <div class="container">
   <div class="event-info">
     <p class="title">{nextEvent.summary}</p>
-    {nextEvent.start && (<p class="date"><i><EventDate event={nextEvent} /><br>{nextEvent.location}</i></p>)}
+    {nextEvent.start
+      ? (<p class="date"><i><EventDate event={nextEvent} /><br>{nextEvent.location}</i></p>)
+      : (<p class="date">Click to be reminded of new meetings</p>)
+    }
   </div>
   <button class="remind remind-open"><img src="/clock.svg" alt="Clock icon" />Remind Me</button>
 </div>

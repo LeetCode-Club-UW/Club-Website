@@ -24,12 +24,23 @@ const { event } = Astro.props;
     color: var(--green);
   }
   .date {
+    margin: 0;
+    font-style: italic;
+  }
+  .location {
     margin-top: 0;
+    font-style: italic;
+  }
+  .event img {
+    height: 15px;
+    margin-right: 5px;
+    transform: translateY(1px);
   }
 </style>
 
 <div class=`event ${event.color === "P" ? "purple" : "green"}`>
   <h3>{event.summary}</h3>
-  <p class="date"><i><EventDate event={event} /><br>{event.location}</i></p>
+  <p class="date"><img src="/clock-2.svg" alt="Clock icon" /><EventDate event={event} /></p>
+  <p class="location"><img src="/location.svg" alt="Location icon" />{event.location}</p>
   <p>{event.description}</p>
 </div>
