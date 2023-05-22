@@ -12,10 +12,14 @@ const nextEvent = events[0] || { summary: "No meetings scheduled" };
   }
   .container {
     display: flex;
-    align-items: center;
     border-radius: 5px;
     padding: 20px;
     background-color: white;
+  }
+  .event-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .event-info p {
     margin: 0;
