@@ -7,6 +7,10 @@ import NextMeeting from '../components/NextMeeting.astro';
 import RemindDialog from '../components/RemindDialog.astro';
 import MemberResources from '../components/MemberResources.astro';
 import ContentSection from '../components/ContentSection.astro';
+import getEvents from '../util/getEvents';
+import Event from '../components/Event.astro';
+import ClubMember from '../components/ClubMember.astro';
+const events = await getEvents();
 ---
 
 <style>
@@ -61,45 +65,59 @@ import ContentSection from '../components/ContentSection.astro';
 		width: 100%;
 	}
 
-	.contact-list {
+	.event-key {
 		display: flex;
+		flex-wrap: wrap;
 	}
-	.contact-list > div {
-		margin-right: 20px;
-		max-width: 300px;
-		flex: 1 1 0px;
+	.key-item {
 		display: flex;
-	}
-	.contact-list > div > div {
-		padding-top: 10px;
-	}
-	.contact-list img {
-		height: 100px;
+		flex-shrink: 0;
 		margin-right: 20px;
 	}
-	.contact-list p {
+	.key-item p {
 		margin: 0;
 	}
-	.contact-list .name {
-		font-family: "Roboto Mono", monospace;
-		font-size: 20px;
+	.key-color {
+		flex-shrink: 0;
+		height: 15px;
+		width: 15px;
+		margin-right: 10px;
+		border: none;
+		border-radius: 3px;
+		transform: translateY(4px);
 	}
-	.contact-list a {
-		color: var(--red);
+	.key-color.green {
+		background-color: var(--green);
 	}
-	@media (max-width: 800px) {
-		.contact-list {
-			flex-direction: column;
-		}
-		.contact-list > div {
-			margin-right: 0;
-			margin-bottom: 20px;
-		}
+	.key-color.purple {
+		background-color: var(--purple);
+	}
+	.no-meetings {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		height: 150px;
+		width: 100%;
+		background-color: rgb(233, 233, 233);
+		border-radius: 5px;
+	}
+	.no-meetings img {
+		height: 50px;
+	}
+	.no-meetings h4 {
+		margin: 10px 0 0;
+		font-family: "Open Sans", sans-serif;
+	}
+
+	.contact-list {
+		display: flex;
+		flex-wrap: wrap;
 	}
 </style>
 
 <Layout 
-	title="Welcome to Astro." 
+	title="LeetCode Club UW | Home" 
 	description="Your journey to a SWE internship starts here."
 	>
 
@@ -112,14 +130,27 @@ import ContentSection from '../components/ContentSection.astro';
 	<MemberResources />
 
 	<ContentSection id="schedule" heading="Meeting Schedule">
-		<iframe 
-		class="calendar-iframe" src="https://calendar.google.com/calendar/embed?height=400&wkst=1&bgcolor=%23E67C73&ctz=America%2FChicago&showPrint=0&showNav=0&showTitle=0&showDate=0&showTabs=0&showCalendars=0&showTz=0&src=Y184YzFmMmRhNGI2ZWQ2YTYxMzljMTliY2ViMzQ3MjRlY2M2MGQyZjQwNTAxMTQwMzlhNTA0YWEyMDRiZDQwMTMwQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23D50000"></iframe>
+		{events.map((event) => (<Event event={event} />))}
 
-		<h3>Bi-Weekly LeetCode Sessions</h3>
-		Go over a sample problem, note different approaches (the initial way, the smart way)
-		40 mins of sample programming (teams? individual?)
-		Explaining solution, giving lesser programs
-		<h3>Occasional Other Meetings</h3>
+		{events.length === 0 && (
+			<div class="no-meetings">
+				<img src="/clock-2.svg" alt="Clock icon" />
+				<h4>No meetings scheduled</h4>
+			</div>
+		)}
+
+		{events.length > 0 && (
+			<div class="event-key">
+				<div class="key-item">
+					<div class="key-color green"></div>
+					<p>Bi-Weekly LeetCode Sessions</p>
+				</div>
+				<div class="key-item">
+					<div class="key-color purple"></div>
+					<p>Special Meetings/Events</p>
+				</div>
+			</div>
+		)}
 	</ContentSection>
 
 	<ContentSection id="about" heading="About">
@@ -136,22 +167,30 @@ import ContentSection from '../components/ContentSection.astro';
 	<ContentSection id="contact" heading="Contact">
 		Feel free to reach out! (something about recruiting guest speakers)
 		<div class="contact-list">
-			<div>
-				<img src="/max.jpeg" alt="Max headshot">
-				<div>
-					<p class="name">Max Maeder</p>
-					<p>Co-founder</p>
-					<p class="email"><a href="mailto:max@leetcodeclub.org" target="_blank">max@leetcodeclub.org</a></p>
-				</div>
-			</div>
-			<div>
-				<img src="/jeremy.jpeg" alt="Jeremy headshot">
-				<div>
-					<p class="name">Jeremy Kintana</p>
-					<p>Co-founder</p>
-					<p class="email"><a href="mailto:jeremy@leetcodeclub.org" target="_blank">jeremy@leetcodeclub.org</a></p>
-				</div>
-			</div>
+			<ClubMember 
+				name="Max Maeder"
+				role="Co-founder"
+				email="max@leetcodeclub.org"
+				photo="/max.jpeg"
+			/>
+			<ClubMember 
+				name="Jeremy Kintana"
+				role="Co-founder"
+				email="jeremy@leetcodeclub.org"
+				photo="/jeremy.jpeg"
+			/>
+			<ClubMember 
+				name="Rahul Hathwar"
+				role="Executive team"
+				email="rahul@leetcodeclub.org"
+				photo="/rahul.jpeg"
+			/>
+			<ClubMember 
+				name="Rahul Hathwar"
+				role="Executive team"
+				email="rahul@leetcodeclub.org"
+				photo="/rahul.jpeg"
+			/>
 		</div>
 	</ContentSection>
 

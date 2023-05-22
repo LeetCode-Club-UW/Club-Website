@@ -1,0 +1,46 @@
+---
+import EventDate from "./EventDate.astro";
+const { event } = Astro.props;
+---
+
+<style>
+  h3 {
+    margin-bottom: 0;
+  }
+  .event {
+    border-left: 2px solid black;
+    padding-left: 10px;
+  }
+  .event.purple {
+    border-left-color: var(--purple);
+  }
+  .event.purple h3 {
+    color: var(--purple);
+  }
+  .event.green {
+    border-left-color: var(--green);
+  }
+  .event.green h3 {
+    color: var(--green);
+  }
+  .date {
+    margin: 0;
+    font-style: italic;
+  }
+  .location {
+    margin-top: 0;
+    font-style: italic;
+  }
+  .event img {
+    height: 15px;
+    margin-right: 5px;
+    transform: translateY(1px);
+  }
+</style>
+
+<div class=`event ${event.color === "P" ? "purple" : "green"}`>
+  <h3>{event.summary}</h3>
+  <p class="date"><img src="/clock-2.svg" alt="Clock icon" /><EventDate event={event} /></p>
+  <p class="location"><img src="/location.svg" alt="Location icon" />{event.location}</p>
+  <p>{event.description}</p>
+</div>

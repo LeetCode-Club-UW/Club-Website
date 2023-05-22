@@ -1,17 +1,9 @@
 ---
 import "@fontsource/open-sans";
 import getEvents from "../util/getEvents";
+import EventDate from "./EventDate.astro";
 const events = await getEvents();
 const nextEvent = events[0] || { summary: "No meetings scheduled" };
-
-const timeZone = "America/Chicago";
-
-let dateStr = "";
-if (nextEvent) {
-  dateStr += new Date(nextEvent.start).toLocaleString('en-US', { timeZone, weekday: "short" }) + " ";
-  dateStr += new Date(nextEvent.start).toLocaleString('en-US', { timeZone, dateStyle:"medium", timeStyle: "short" }) + " to ";
-  dateStr += new Date(nextEvent.end).toLocaleString('en-US', { timeZone, timeStyle: "short" });
-}
 ---
 
 <style>
@@ -20,10 +12,14 @@ if (nextEvent) {
   }
   .container {
     display: flex;
-    /*align-items: center;*/
     border-radius: 5px;
     padding: 20px;
     background-color: white;
+  }
+  .event-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .event-info p {
     margin: 0;
@@ -61,12 +57,24 @@ if (nextEvent) {
   .remind:hover {
     color: rgba(255, 255, 255, .5);
   }
+  @media (max-width: 800px) {
+    .container {
+      margin-left: -20px;
+      margin-right: -20px;
+    }
+    .remind {
+      margin-left: 20px;
+    }
+  }
 </style>
 
 <div class="container">
   <div class="event-info">
     <p class="title">{nextEvent.summary}</p>
-    {dateStr && (<p class="date"><i>{dateStr}<br>{nextEvent.location}</i></p>)}
+    {nextEvent.start
+      ? (<p class="date"><i><EventDate event={nextEvent} /><br>{nextEvent.location}</i></p>)
+      : (<p class="date">Click to be reminded of new meetings</p>)
+    }
   </div>
   <button class="remind remind-open"><img src="/clock.svg" alt="Clock icon" />Remind Me</button>
 </div>

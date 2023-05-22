@@ -23,6 +23,9 @@ const { title, description } = Astro.props;
 
 			gtag('config', 'G-ND7Q8N6QYJ');
 		</script>
+		<script is:inline type="module">
+			window.onhashchange = window.onload = () => window.scrollBy({ top: -100 })
+		</script>
 	</head>
 	<body>
 		<Header />
@@ -37,6 +40,8 @@ const { title, description } = Astro.props;
 	:root {
 		--red: rgb(197, 6, 12);
 		--gray: rgb(24, 24, 24);
+		--purple: #710193;
+    --green: #228C22;
 	}
 	html, body {
 		margin: 0;
