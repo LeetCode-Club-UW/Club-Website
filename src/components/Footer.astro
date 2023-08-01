@@ -49,6 +49,20 @@ import "@fontsource/open-sans";
     border-radius: 4px;
     width: 250px;
   }
+  .social-links {
+    /*margin-top: 20px;*/
+  }
+  .social-links a {
+    text-decoration: none;
+  }
+  .social-links img {
+    height: 40px;
+    margin: 30px 10px 0;
+    transition: opacity 0.2s;
+  }
+  .social-links img:hover {
+    opacity: .5;
+  }
   @media (max-width: 800px) {
     .container {
       margin-top: 30px;
@@ -66,4 +80,12 @@ import "@fontsource/open-sans";
     <input type="email" name="EMAIL" placeholder="Your email..." />
     <button type="submit">Submit</button>
   </form>
+  <div class="social-links">
+    <a href="https://discord.gg/ZtfrZ2HNpf" target="_blank">
+      <img src="/discord.svg" alt="Discord icon" />
+    </a>
+    <a href="https://www.instagram.com/leetcodeclub/" target="_blank">
+      <img src="/instagram.svg" alt="Instagram icon" />
+    </a>
+  </div>
 </div>
