@@ -1,6 +1,7 @@
 ---
 import "@fontsource/roboto-mono";
 import "@fontsource/open-sans";
+import { SOCIAL_LINKS, MAILCHIMP_URL } from "../config/social";
 ---
 
 <style>
@@ -138,7 +139,7 @@ import "@fontsource/open-sans";
       <div>
         <img src="/mail.svg" alt="Mail icon" />
         <h4>Get an email</h4>
-        <form action="https://leetcodeclub.us21.list-manage.com/subscribe/post?u=53d0a5023cce7f310e6bfa082&amp;id=095bca25cb&amp;f_id=007654e1f0" method="post" target="_blank">
+        <form action={MAILCHIMP_URL} method="post" target="_blank">
           <input type="email" name="EMAIL" placeholder="Your email..." />
           <button type="submit">Submit</button>
         </form>
@@ -152,7 +153,8 @@ import "@fontsource/open-sans";
   </div>  
 </div>
 
-<script>
+<script>import { SOCIAL_LINKS } from "../config/social";
+
   const dialog = document.getElementById("remind-dialog");
   const close = () => document.body.classList.remove("show-remind");
 
@@ -165,6 +167,7 @@ import "@fontsource/open-sans";
   });
 
   document.querySelector(".goto-cal").addEventListener("click", () => {
-    window.open("https://discord.gg/ZtfrZ2HNpf", "_blank");
+    const discord = SOCIAL_LINKS.find(({ name }) => name === "Discord")
+    window.open(discord.href, "_blank");
   });
 </script>

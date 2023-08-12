@@ -1,6 +1,7 @@
 ---
 import "@fontsource/roboto-mono";
 import "@fontsource/open-sans";
+import { SOCIAL_LINKS, MAILCHIMP_URL } from "../config/social";
 ---
 
 <style>
@@ -76,16 +77,15 @@ import "@fontsource/open-sans";
 <div class="container">
   <img class="logo" src="/logo.svg" alt="LeetCode Club Logo" />
   <h2>Join our Mailing List!</h2>
-  <form class="form" action="https://leetcodeclub.us21.list-manage.com/subscribe/post?u=53d0a5023cce7f310e6bfa082&amp;id=095bca25cb&amp;f_id=007654e1f0" method="post" target="_blank">
+  <form class="form" action={MAILCHIMP_URL} method="post" target="_blank">
     <input type="email" name="EMAIL" placeholder="Your email..." />
     <button type="submit">Submit</button>
   </form>
   <div class="social-links">
-    <a href="https://discord.gg/ZtfrZ2HNpf" target="_blank">
-      <img src="/discord.svg" alt="Discord icon" />
-    </a>
-    <a href="https://www.instagram.com/leetcodeclub/" target="_blank">
-      <img src="/instagram.svg" alt="Instagram icon" />
-    </a>
+    {SOCIAL_LINKS.map(link => (
+      <a href={link.href} target="_blank">
+        <img src={link.iconUrl} alt={`${link.name} icon`} />
+      </a>
+    ))}
   </div>
 </div>

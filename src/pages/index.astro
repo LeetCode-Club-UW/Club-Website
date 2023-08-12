@@ -7,9 +7,10 @@ import NextMeeting from '../components/NextMeeting.astro';
 import RemindDialog from '../components/RemindDialog.astro';
 import MemberResources from '../components/MemberResources.astro';
 import ContentSection from '../components/ContentSection.astro';
-import getEvents from '../util/getEvents';
+import { getEvents } from '../util/getEvents';
 import Event from '../components/Event.astro';
 import ClubMember from '../components/ClubMember.astro';
+import { MEMBERS } from '../config/members';
 const events = await getEvents();
 ---
 
@@ -61,12 +62,6 @@ const events = await getEvents();
 		}
 	}
 
-	.calendar-iframe {
-		border-width:0;
-		height: 400px;
-		width: 100%;
-	}
-
 	.event-key {
 		display: flex;
 		flex-wrap: wrap;
@@ -113,8 +108,13 @@ const events = await getEvents();
 	}
 
 	.contact-list {
-		display: flex;
-		flex-wrap: wrap;
+		display: grid;
+  	grid-template-columns: 1fr 1fr;
+	}
+	@media (max-width: 800px) {
+		.contact-list {
+			grid-template-columns: auto;
+		}
 	}
 </style>
 
@@ -126,7 +126,7 @@ const events = await getEvents();
 	<div class="hero">
 		<h1>Your journey to a <b>SWE internship</b> starts here.</h1>
 		<h2><i>Next Meeting:</i></h2>
-		<NextMeeting />
+		<NextMeeting events={events} />
 	</div>
 
 	<MemberResources />
@@ -167,30 +167,9 @@ const events = await getEvents();
 	<ContentSection id="contact" heading="Contact">
 		Feel free to reach out! We're also always looking for guest speakers.
 		<div class="contact-list">
-			<ClubMember 
-				name="Max Maeder"
-				role="Co-founder"
-				email="max@leetcodeclub.org"
-				photo="/max.jpeg"
-			/>
-			<ClubMember 
-				name="Jeremy Kintana"
-				role="Co-founder"
-				email="jeremy@leetcodeclub.org"
-				photo="/jeremy.jpeg"
-			/>
-			<ClubMember 
-				name="Rahul Hathwar"
-				role="Executive team"
-				email="rahul@leetcodeclub.org"
-				photo="/rahul.jpeg"
-			/>
-			<ClubMember 
-				name="Sarthak Agrawal"
-				role="Executive team"
-				email="sarthak@leetcodeclub.org"
-				photo="/sarthak.jpeg"
-			/>
+			{MEMBERS.map((member) => (
+				<ClubMember {...member} />
+			))}
 		</div>
 	</ContentSection>
 

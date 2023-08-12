@@ -1,12 +1,23 @@
-import ical from "node-ical";
+import ical, { VEvent } from "node-ical";
+import { CAL_URL } from "../config/calendar";
 
-const CAL_URL = "https://calendar.google.com/calendar/ical/c_8c1f2da4b6ed6a6139c19bceb34724ecc60d2f4050114039a504aa204bd40130%40group.calendar.google.com/public/basic.ics";
+type EventColor = "g" | "r";
+
+type EventType = {
+  summary: string;
+  description: string;
+  location: string;
+  color: EventColor;
+  start: Date;
+  end: Date;
+};
 
 const getEvents = async () => {
   let now = new Date().getTime();
 
-  let events = Object.values(await ical.async.fromURL(CAL_URL))
-    .filter((event) => new Date(event.end).getTime() > now)
+  let vEvents = Object.values(await ical.async.fromURL(CAL_URL)) as VEvent[];
+
+  let events = vEvents.filter((event) => new Date(event.end).getTime() > now)
     .map((event) => {
       let summary = event.summary;
       let color = "G";
@@ -29,7 +40,7 @@ const getEvents = async () => {
     .sort((a, b) => a.start.getTime() - b.start.getTime())
     .slice(0, 4);
 
-  return events;
+  return events as EventType[];
 }
 
-export default getEvents;
+export { type EventType, getEvents };

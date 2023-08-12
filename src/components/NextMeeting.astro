@@ -1,8 +1,13 @@
 ---
 import "@fontsource/open-sans";
-import getEvents from "../util/getEvents";
 import EventDate from "./EventDate.astro";
-const events = await getEvents();
+import { EventType } from "../util/getEvents";
+
+type Props = {
+  events: EventType[];
+}
+
+const { events } = Astro.props;
 const nextEvent = events[0] || { summary: "No meetings scheduled" };
 ---
 
@@ -71,7 +76,7 @@ const nextEvent = events[0] || { summary: "No meetings scheduled" };
 <div class="container">
   <div class="event-info">
     <p class="title">{nextEvent.summary}</p>
-    {nextEvent.start
+    {"start" in nextEvent
       ? (<p class="date"><i><EventDate event={nextEvent} /><br>{nextEvent.location}</i></p>)
       : (<p class="date">Click to be reminded of new meetings</p>)
     }

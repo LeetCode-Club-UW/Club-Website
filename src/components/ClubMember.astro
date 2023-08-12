@@ -1,6 +1,9 @@
 ---
 import "@fontsource/roboto-mono";
 import "@fontsource/open-sans";
+import { ClubMember } from "../config/members";
+
+type Props = ClubMember;
 
 const { name, role, email, photo } = Astro.props;
 ---
@@ -18,6 +21,8 @@ const { name, role, email, photo } = Astro.props;
 	}
 	.member img {
 		height: 100px;
+		aspect-ratio: 1;
+		object-fit: cover;
 		margin-right: 20px;
     border-radius: 5px;
 	}
@@ -38,6 +43,6 @@ const { name, role, email, photo } = Astro.props;
   <div>
     <p class="name">{name}</p>
     <p>{role}</p>
-    <p class="email"><a href=`mailto:${email}` target="_blank">{email}</a></p>
+    {email && (<p class="email"><a href={`mailto:${email}`} target="_blank">{email}</a></p>)}
   </div>
 </div>
