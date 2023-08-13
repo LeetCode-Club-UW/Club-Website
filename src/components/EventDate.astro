@@ -1,7 +1,13 @@
 ---
-const { event } = Astro.props;
+import { EventType } from '../util/getEvents';
+import { TIMEZONE } from "../config/calendar";
 
-const timeZone = "America/Chicago";
+type Props = {
+  event: EventType;
+}
+
+const { event } = Astro.props;
+const timeZone = TIMEZONE;
 
 let dateStr = "";
 if (event.start) {

@@ -1,7 +1,7 @@
 import ical, { VEvent } from "node-ical";
 import { CAL_URL } from "../config/calendar";
 
-type EventColor = "g" | "r";
+type EventColor = "G" | "P";
 
 type EventType = {
   summary: string;

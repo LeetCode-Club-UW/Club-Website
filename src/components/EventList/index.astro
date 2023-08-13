@@ -1,0 +1,79 @@
+---
+import { EventType } from "../../util/getEvents";
+import Event from "./Event.astro";
+
+type Props = {
+  events: EventType[];
+}
+
+const { events } = Astro.props;
+---
+
+<style>
+  .event-key {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.key-item {
+		display: flex;
+		flex-shrink: 0;
+		margin-right: 20px;
+	}
+	.key-item p {
+		margin: 0;
+	}
+	.key-color {
+		flex-shrink: 0;
+		height: 15px;
+		width: 15px;
+		margin-right: 10px;
+		border: none;
+		border-radius: 3px;
+		transform: translateY(4px);
+	}
+	.key-color.green {
+		background-color: var(--green);
+	}
+	.key-color.purple {
+		background-color: var(--purple);
+	}
+	.no-meetings {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		height: 150px;
+		width: 100%;
+		background-color: rgb(235, 235, 235);
+		border-radius: 5px;
+	}
+	.no-meetings img {
+		height: 50px;
+	}
+	.no-meetings h4 {
+		margin: 10px 0 0;
+		font-family: "Open Sans", sans-serif;
+	}
+</style>
+
+{events.map((event) => (<Event event={event} />))}
+
+{events.length === 0 && (
+  <div class="no-meetings">
+    <img src="/clock-2.svg" alt="Clock icon" />
+    <h4>No meetings scheduled</h4>
+  </div>
+)}
+
+{events.length > 0 && (
+  <div class="event-key">
+    <div class="key-item">
+      <div class="key-color green"></div>
+      <p>Bi-Weekly LeetCode Sessions</p>
+    </div>
+    <div class="key-item">
+      <div class="key-color purple"></div>
+      <p>Special Meetings/Events</p>
+    </div>
+  </div>
+)}
