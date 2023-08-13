@@ -1,7 +1,7 @@
 ---
 import "@fontsource/roboto-mono";
 import "@fontsource/open-sans";
-import { SOCIAL_LINKS, MAILCHIMP_URL } from "../config/social";
+import { MAILCHIMP_URL } from "../config/links";
 ---
 
 <style>
@@ -153,7 +153,8 @@ import { SOCIAL_LINKS, MAILCHIMP_URL } from "../config/social";
   </div>  
 </div>
 
-<script>import { SOCIAL_LINKS } from "../config/social";
+<script>
+  import { SOCIAL_LINKS } from "../config/links";
 
   const dialog = document.getElementById("remind-dialog");
   const close = () => document.body.classList.remove("show-remind");
