@@ -1,11 +1,11 @@
-type ClubMember = {
+type MemberType = {
   name: string;
   role: string;
   email?: string;
   photo: string;
 }
 
-const MEMBERS: ClubMember[] = [
+const MEMBERS: MemberType[] = [
   {
     name: "Max Maeder",
     role: "Co-founder",
@@ -30,4 +30,4 @@ const MEMBERS: ClubMember[] = [
   }
 ];
 
-export { type ClubMember, MEMBERS };
+export { type MemberType, MEMBERS };

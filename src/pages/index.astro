@@ -3,14 +3,18 @@ import Layout from '../layouts/Layout.astro';
 
 import "@fontsource/roboto-mono";
 import "@fontsource/open-sans";
+
+import { getEvents } from '../util/getEvents';
+
 import NextMeeting from '../components/NextMeeting.astro';
 import RemindDialog from '../components/RemindDialog.astro';
-import MemberResources from '../components/MemberResources.astro';
+
 import ContentSection from '../components/ContentSection.astro';
-import { getEvents } from '../util/getEvents';
-import {Content as About} from '../content/index/about.md';
+import MemberResources from '../components/MemberResources.astro';
 import EventList from '../components/EventList/index.astro';
-import ClubMember from '../components/ClubMember.astro';
+import MemberList from '../components/MemberList/index.astro';
+
+import {Content as About} from '../content/index/about.md';
 import { MEMBERS } from '../config/members';
 const events = await getEvents();
 ---
@@ -62,16 +66,6 @@ const events = await getEvents();
 			font-size: 25px;
 		}
 	}
-
-	.contact-list {
-		display: grid;
-  	grid-template-columns: 1fr 1fr;
-	}
-	@media (max-width: 800px) {
-		.contact-list {
-			grid-template-columns: auto;
-		}
-	}
 </style>
 
 <Layout 
@@ -97,11 +91,7 @@ const events = await getEvents();
 
 	<ContentSection id="contact" heading="Contact">
 		Feel free to reach out! We're also always looking for guest speakers.
-		<div class="contact-list">
-			{MEMBERS.map((member) => (
-				<ClubMember {...member} />
-			))}
-		</div>
+		<MemberList members={MEMBERS} />
 	</ContentSection>
 
 	<RemindDialog />

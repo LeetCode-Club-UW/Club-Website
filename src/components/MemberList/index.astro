@@ -1,0 +1,28 @@
+---
+import { MemberType } from "../../config/members";
+import Member from "./Member.astro";
+
+type Props = {
+  members: MemberType[];
+}
+
+const { members } = Astro.props;
+---
+
+<style>
+  .contact-list {
+		display: inline-grid;
+		grid-template-columns: auto auto;
+	}
+	@media (max-width: 800px) {
+		.contact-list {
+			grid-template-columns: auto;
+		}
+	}
+</style>
+
+<div class="contact-list">
+  {members.map((member) => (
+    <Member {...member} />
+  ))}
+</div>

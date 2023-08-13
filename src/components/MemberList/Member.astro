@@ -1,9 +1,9 @@
 ---
 import "@fontsource/roboto-mono";
 import "@fontsource/open-sans";
-import { ClubMember } from "../config/members";
+import { MemberType } from "../../config/members";
 
-type Props = ClubMember;
+type Props = MemberType;
 
 const { name, role, email, photo } = Astro.props;
 ---
