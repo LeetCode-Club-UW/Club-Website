@@ -33,8 +33,8 @@ const getEvents = async () => {
         summary,
         location: event.location,
         description: event.description,
-        start: new Date(event.start),
-        end: new Date(event.end)
+        start: event.start,
+        end: event.end,
       }
     })
     .sort((a, b) => a.start.getTime() - b.start.getTime())
