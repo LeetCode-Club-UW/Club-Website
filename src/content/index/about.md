@@ -1,6 +1,6 @@
-LeetCode Club is a student group that prepares students for software engineering internships and jobs. No matter if you're new to LeetCode or experienced, you'll gain something valuable from our meetings.
+LeetCode Club is a student group that prepares students for software engineering internships and jobs. Whether you're new to applying to internships and LeetCode or very experienced, you'll gain something valuable from our meetings.
 
-During our primary meetings, we explain an important LeetCode concept, such as two-pointers or Kruskal’s Algorithm, then help students work through one or more LeetCode problems which test this concept. Finally, we explore the optimal solutions and algorithm patterns of the problems as a group, and leave attendees with similar problems to work through on their own time. 
+During our primary meetings, we explain an important LeetCode concept, such as two-pointers or Kruskal’s Algorithm, and then help students work through one or more LeetCode problems that test this concept. Finally, we explore the optimal solutions and algorithm patterns of the problems as a group and leave attendees with similar problems to work through on their own time. Solving hard LeetCode problems is an important skill necessary to pass hard technical interviews for competitive internships.
 
 Experienced programmers are encouraged to begin working on problems at the start of the meeting and offer assistance to others if time permits.
 

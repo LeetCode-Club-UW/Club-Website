@@ -15,6 +15,7 @@ import EventList from '../components/EventList/index.astro';
 import MemberList from '../components/MemberList/index.astro';
 
 import {Content as About} from '../content/index/about.md';
+import {Content as Contact} from '../content/index/contact.md';
 import { MEMBERS } from '../config/members';
 const events = await getEvents();
 ---
@@ -90,7 +91,7 @@ const events = await getEvents();
 	</ContentSection>
 
 	<ContentSection id="contact" heading="Contact">
-		Feel free to reach out! We're also always looking for guest speakers.
+		<Contact />
 		<MemberList members={MEMBERS} />
 	</ContentSection>
 
