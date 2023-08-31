@@ -1,1 +1,1 @@
-Feel free to reach out! We're also always looking for guest speakers.
+Feel free to reach out to our team! We're also always looking for guest speakers.

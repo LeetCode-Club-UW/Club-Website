@@ -17,6 +17,7 @@ import MemberList from '../components/MemberList/index.astro';
 import {Content as About} from '../content/index/about.md';
 import {Content as Contact} from '../content/index/contact.md';
 import { MEMBERS } from '../config/members';
+import CompanyList from '../components/CompanyList.astro';
 const events = await getEvents();
 ---
 
@@ -90,9 +91,13 @@ const events = await getEvents();
 		<About />
 	</ContentSection>
 
+	<ContentSection id="team" heading="Our Team">
+		<CompanyList />
+		<MemberList members={MEMBERS} />
+	</ContentSection>
+
 	<ContentSection id="contact" heading="Contact">
 		<Contact />
-		<MemberList members={MEMBERS} />
 	</ContentSection>
 
 	<RemindDialog />

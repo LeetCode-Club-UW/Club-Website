@@ -27,7 +27,39 @@ const MEMBERS: MemberType[] = [
     name: "Sarthak Agrawal",
     role: "Executive team",
     photo: "/sarthak.jpeg"
+  },
+  {
+    name: "Nikita Agarwal",
+    role: "Executive team",
+    photo: "/nikita.jpeg"
   }
 ];
 
-export { type MemberType, MEMBERS };
+const COMPANIES = [
+  {
+    name: "Amazon",
+    photo: "/amazon.png"
+  },
+  {
+    name: "Meta",
+    photo: "/meta.png"
+  },
+  {
+    name: "Splunk",
+    photo: "/splunk.png"
+  },
+  {
+    name: "Walmart Global Tech",
+    photo: "/walmart.png"
+  },
+  {
+    name: "Langan",
+    photo: "/langan.png"
+  },
+  {
+    name: "Extreme Engineering Solutions",
+    photo: "/xes.png"
+  }
+]
+
+export { type MemberType, MEMBERS, COMPANIES };

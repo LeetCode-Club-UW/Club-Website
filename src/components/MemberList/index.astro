@@ -12,7 +12,8 @@ const { members } = Astro.props;
 <style>
   .contact-list {
 		display: inline-grid;
-		grid-template-columns: auto auto;
+		grid-template-columns: 1fr 1fr;
+		min-width: 100%;
 	}
 	@media (max-width: 800px) {
 		.contact-list {
