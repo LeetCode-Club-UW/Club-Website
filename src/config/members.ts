@@ -53,6 +53,10 @@ const COMPANIES = [
     photo: "/walmart.png"
   },
   {
+    name: "Optum",
+    photo: "/optum.png"
+  },
+  {
     name: "Langan",
     photo: "/langan.png"
   },
