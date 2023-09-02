@@ -2,7 +2,7 @@ const SOCIAL_LINKS = [
   {
     iconUrl: "/discord.svg",
     name: "Discord",
-    href: "https://discord.gg/ZtfrZ2HNpf"
+    href: "https://discord.gg/yDrAERrE3u"
   },
   {
     iconUrl: "/instagram.svg",
