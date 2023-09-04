@@ -39,7 +39,7 @@ const MEMBERS: MemberType[] = [
     photo: "/geoffrey.jpeg"
   },
   {
-    name: "Roshni Venkat ",
+    name: "Roshni Venkat",
     role: "Executive team",
     photo: "/roshni.jpeg"
   }
