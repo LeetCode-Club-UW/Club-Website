@@ -13,12 +13,10 @@ let dateStr = "";
 
 // All day events
 if (event.start.toTimeString() === event.end.toTimeString()) {
-  dateStr += event.start + " === ";
   dateStr += event.start.toLocaleString('en-US', { dateStyle: "medium" });
 
 // Not all day events
 } else {
-  dateStr += event.start + " === ";
   dateStr += event.start.toLocaleString('en-US', { timeZone, weekday: "short" }) + " ";
   dateStr += event.start.toLocaleString('en-US', { timeZone, dateStyle:"medium", timeStyle: "short" }) + " to ";
   dateStr += event.end.toLocaleString('en-US', { timeZone, timeStyle: "short" });
