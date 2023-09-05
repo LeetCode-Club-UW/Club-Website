@@ -42,6 +42,11 @@ const MEMBERS: MemberType[] = [
     name: "Roshni Venkat",
     role: "Executive team",
     photo: "/roshni.jpeg"
+  },
+  {
+    name: "Ananya Aggarwal",
+    role: "Executive team",
+    photo: "/ananya.jpeg"
   }
 ];
 
@@ -57,6 +62,10 @@ const COMPANIES = [
   {
     name: "Roblox",
     photo: "/roblox.png"
+  },
+  {
+    name: "Dell",
+    photo: "/dell.png"
   },
   {
     name: "Splunk",
