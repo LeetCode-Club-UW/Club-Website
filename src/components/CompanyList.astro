@@ -1,6 +1,8 @@
 ---
 import { COMPANIES } from "../config/members";
+import { shuffle } from "../util/shuffle";
 
+const shuffleComp = shuffle(COMPANIES);
 ---
 
 <style>
@@ -62,7 +64,7 @@ import { COMPANIES } from "../config/members";
   <p class="label">Our team has received offers from...</p>
   <div class="companies-container">
     <div class="companies">
-      {[...Array(2)].map(_ => COMPANIES.map(c => (
+      {[...Array(2)].map(_ => shuffleComp.map(c => (
         <img class="company-img" src={c.photo} alt={`${c.name} logo`} />
       )))}
     </div>
