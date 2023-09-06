@@ -1,5 +1,8 @@
 ---
 import "@fontsource/open-sans";
+import { SOCIAL_LINKS } from "../config/links";
+
+const discord = SOCIAL_LINKS.find(({ name }) => name === "Discord")
 ---
 
 <style>
@@ -36,6 +39,16 @@ import "@fontsource/open-sans";
     background-color: var(--red);
     border-radius: 5px;
   }
+  .discord {
+    background-color: #7289da !important;
+  }
+  .discord img {
+    vertical-align: middle;
+    transform: translateY(-1px) scale(130%);
+    height: 22px;
+    margin-right: 15px;
+    filter: invert(1);
+  }
   #menu-items a {
     color: unset;
     text-decoration: none;
@@ -62,6 +75,7 @@ import "@fontsource/open-sans";
       <li><a href="#schedule">Schedule</a></li>
       <li><a href="#about">About</a></li>
       <li class="action remind-open"><a>Get Involved</a></li>
+      <li class="action discord"><a href={discord.href} target="_blank"><img src="discord.svg"/>Discord</a></li>
     </ul>
   </div>
 </div>
