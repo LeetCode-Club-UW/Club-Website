@@ -35,8 +35,10 @@ const getEvents = async () => {
 
       let resourcesLink: string;
       for (let line of descLines) {
+
         if (!line.startsWith("Resources")) {
-          description += line + "<br>";
+          if (line.trim() !== "")
+            description += line;
           continue;
         }
 
@@ -47,7 +49,6 @@ const getEvents = async () => {
         if (linkParts.length < 2) continue;
 
         resourcesLink = linkParts[1].trim();
-        break;
       }
       
       return {
