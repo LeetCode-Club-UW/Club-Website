@@ -1,0 +1,70 @@
+---
+import { DISPLAY_RES_AFTER } from "../config/calendar";
+import { EventType } from "../util/getEvents";
+
+type Props = {
+  events: EventType[];
+}
+
+const { events } = Astro.props;
+let showOverlay = false;
+
+if (events.length === 0) return;
+const nextEvent = events[0];
+if (!nextEvent.resourcesLink) return;
+if (nextEvent.start.getTime() - DISPLAY_RES_AFTER > new Date().getTime()) return;
+
+showOverlay = true;
+---
+
+<style>
+  #resources-overlay {
+    display: none;
+  }
+  :global(.show-resources) #resources-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background-color: white;
+  }
+  .menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+  }
+  .menu h2 {
+    margin: 0;
+    white-space: nowrap;
+    font-family: "Roboto Mono", monospace;
+    color: var(--gray);
+  }
+  #close-resources {
+    cursor: pointer;
+    height: 30px;
+  }
+  iframe {
+    height: 100%;
+    width: 100%;
+    border: none;
+  }
+</style>
+
+<div id="resources-overlay" class="">
+  <div class="menu">
+    <h2>Meeting Resources</h2>
+    <img id="close-resources" src="/close.svg"/>
+  </div>
+  <iframe src={nextEvent.resourcesLink || ""}></iframe>
+</div>
+
+{showOverlay && (
+  <script>
+    document.body.classList.add("show-resources");
+    document.querySelector("#close-resources").addEventListener("click", () => {
+      document.body.classList.remove("show-resources");
+    });
+  </script>
+)}

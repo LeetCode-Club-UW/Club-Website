@@ -1,11 +1,12 @@
 import ical, { VEvent } from "node-ical";
-import { CAL_URL } from "../config/calendar";
+import { CAL_URL, MATCH_LINKS } from "../config/calendar";
 
 type EventColor = "G" | "P";
 
 type EventType = {
   summary: string;
   description: string;
+  resourcesLink?: string;
   location: string;
   color: EventColor;
   start: Date;
@@ -27,12 +28,34 @@ const getEvents = async () => {
         color = summParts[0].trim();
         summary = summParts[1].trim();
       }
+
+      let description = event.description || "";
+      const descLines = description.split("<br>");
+      description = "";
+
+      let resourcesLink: string;
+      for (let line of descLines) {
+        if (!line.startsWith("Resources")) {
+          description += line + "<br>";
+          continue;
+        }
+
+        const links = line.match(MATCH_LINKS);
+        if (!links || links.length === 0) continue;
+
+        let linkParts = links[0].split("=");
+        if (linkParts.length < 2) continue;
+
+        resourcesLink = linkParts[1].trim();
+        break;
+      }
       
       return {
         color,
         summary,
+        resourcesLink,
         location: event.location,
-        description: event.description,
+        description,
         start: event.start,
         end: event.end,
       }

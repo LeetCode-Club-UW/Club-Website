@@ -18,6 +18,7 @@ import {Content as About} from '../content/index/about.md';
 import {Content as Contact} from '../content/index/contact.md';
 import { MEMBERS } from '../config/members';
 import CompanyList from '../components/CompanyList.astro';
+import ResourcesOverlay from '../components/ResourcesOverlay.astro';
 const events = await getEvents();
 ---
 
@@ -101,4 +102,5 @@ const events = await getEvents();
 	</ContentSection>
 
 	<RemindDialog />
+	<ResourcesOverlay events={events} />
 </Layout>
