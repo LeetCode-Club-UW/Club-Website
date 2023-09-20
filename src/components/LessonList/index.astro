@@ -1,0 +1,21 @@
+---
+import { LessonType } from "../../config/lessons";
+import Lesson from "./Lesson.astro";
+
+type Props = {
+  lessons: LessonType[];
+} 
+
+const { lessons } = Astro.props;
+---
+
+<style>
+  .lesson-list {
+    display: flex;
+    overflow: scroll;
+  }
+</style>
+
+<div class="lesson-list">
+  {lessons.map((item) => (<Lesson item={item} />))}
+</div>

@@ -17,6 +17,8 @@ import MemberList from '../components/MemberList/index.astro';
 import {Content as About} from '../content/index/about.md';
 import {Content as Contact} from '../content/index/contact.md';
 import { MEMBERS } from '../config/members';
+import { LESSONS } from '../config/lessons';
+import LessonList from '../components/LessonList/index.astro';
 import CompanyList from '../components/CompanyList.astro';
 import ResourcesOverlay from '../components/ResourcesOverlay.astro';
 const events = await getEvents();
@@ -95,6 +97,10 @@ const events = await getEvents();
 	<ContentSection id="team" heading="Our Team">
 		<CompanyList />
 		<MemberList members={MEMBERS} />
+	</ContentSection>
+
+	<ContentSection id="lessons" heading="Past Lessons">
+		<LessonList lessons={LESSONS} />
 	</ContentSection>
 
 	<ContentSection id="contact" heading="Contact">
