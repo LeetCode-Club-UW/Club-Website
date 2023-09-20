@@ -80,10 +80,6 @@ const COMPANIES = [
     photo: "/optum.png"
   },
   {
-    name: "Langan",
-    photo: "/langan.png"
-  },
-  {
     name: "Extreme Engineering Solutions",
     photo: "/xes.png"
   }
