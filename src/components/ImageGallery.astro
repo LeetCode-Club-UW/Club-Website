@@ -1,0 +1,66 @@
+---
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
+const images = await Astro.glob("./../../public/gallery/*").then(files => {
+  return files.map(file => file.default.replace("/public", ""));
+});
+---
+
+<style is:global>
+  :root {
+    --swiper-theme-color: white !important;
+  }
+</style>
+
+<style>
+  .swiper {
+    height: 300px;
+  }
+  .image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: var(--box-border-radius);
+  }
+</style>
+
+<div class="swiper">
+  <div class="swiper-wrapper">
+    {images.map(image => (
+      <div class="swiper-slide">
+        <img class="image" src={image} loading="lazy" />
+        <div class="swiper-lazy-preloader"></div>
+      </div>
+    ))}
+  </div>
+
+  <div class="swiper-pagination"></div>
+
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+</div>
+
+
+<script>
+  // import Swiper JS
+  import Swiper from 'swiper';
+  import { Navigation, Pagination } from 'swiper/modules';
+  // import Swiper styles
+
+  const swiper = new Swiper('.swiper', {
+    modules: [Navigation, Pagination],
+
+    loop: true,
+
+    pagination: {
+      el: '.swiper-pagination',
+    },
+
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+</script>

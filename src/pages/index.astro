@@ -19,6 +19,7 @@ import {Content as Contact} from '../content/index/contact.md';
 import { MEMBERS } from '../config/members';
 import { LESSONS } from '../config/lessons';
 import LessonList from '../components/LessonList/index.astro';
+import ImageGallery from '../components/ImageGallery.astro';
 import CompanyList from '../components/CompanyList.astro';
 import ResourcesOverlay from '../components/ResourcesOverlay.astro';
 const events = await getEvents();
@@ -91,6 +92,7 @@ const events = await getEvents();
 	</ContentSection>
 
 	<ContentSection id="about" heading="About">
+		<ImageGallery />
 		<About />
 	</ContentSection>
 
