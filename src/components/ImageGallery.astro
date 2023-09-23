@@ -46,15 +46,16 @@ const images = await Astro.glob("./../../public/gallery/*").then(files => {
 <script>
   // import Swiper JS
   import Swiper from 'swiper';
-  import { Navigation, Pagination } from 'swiper/modules';
+  import { Navigation, Pagination, Autoplay } from 'swiper/modules';
   // import Swiper styles
 
   const swiper = new Swiper('.swiper', {
-    modules: [Navigation, Pagination],
+    modules: [Navigation, Pagination, Autoplay],
 
     loop: true,
     autoplay: {
       delay: 3000,
+      disableOnInteraction: false
     },
 
     pagination: {
