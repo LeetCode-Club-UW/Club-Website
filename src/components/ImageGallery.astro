@@ -53,6 +53,9 @@ const images = await Astro.glob("./../../public/gallery/*").then(files => {
     modules: [Navigation, Pagination],
 
     loop: true,
+    autoplay: {
+      delay: 3000,
+    },
 
     pagination: {
       el: '.swiper-pagination',
