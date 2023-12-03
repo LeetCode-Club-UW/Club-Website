@@ -72,6 +72,10 @@ const COMPANIES = [
     photo: "/splunk.png"
   },
   {
+    name: "Capital One",
+    photo: "/capital-one.png"
+  },
+  {
     name: "Walmart Global Tech",
     photo: "/walmart.png"
   },
