@@ -47,6 +47,11 @@ const MEMBERS: MemberType[] = [
     name: "Aditya Tolia",
     role: "Executive team",
     photo: "/aditya.jpeg"
+  },
+  {
+    name: "Ananya Aggarwal",
+    role: "Executive team",
+    photo: "/ananya.jpeg"
   }
 ];
 
@@ -82,6 +87,10 @@ const COMPANIES = [
   {
     name: "Optum",
     photo: "/optum.png"
+  },
+    {
+    name: "Dell",
+    photo: "/dell.png"
   },
   {
     name: "Extreme Engineering Solutions",
