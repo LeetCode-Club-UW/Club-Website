@@ -52,6 +52,11 @@ const MEMBERS: MemberType[] = [
     name: "Ananya Aggarwal",
     role: "Executive team",
     photo: "/ananya.jpeg"
+  },
+  {
+    name: "Merlin Morton",
+    role: "Executive team",
+    photo: "/merlin.jpeg"
   }
 ];
 
